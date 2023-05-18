@@ -97,6 +97,12 @@ def align_shoulders_z(s1, s2):
     return rot
 
 if __name__ == '__main__':
+    
+    #initialize a node
+    rospy.init_node("plain_py_node")
+    # Display the namespace of the node handle
+    rospy.loginfo("PLAIN PY NODE] namespace of node = " + rospy.get_namespace());
+    
     with open(model_path, 'rb') as f:
         model = pkl.load(f)
 
