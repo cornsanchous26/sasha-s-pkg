@@ -167,3 +167,11 @@ if __name__ == '__main__':
     out_traj[1] = a[:, 3:]
 
     np.save('tphsmm_traj2_001.npy', out_traj)
+    
+    rate = rospy.Rate(80) # 80hz
+    while not rospy.is_shutdown():
+        out_traj = np.zeros((2, a.shape[0], 3))
+        out_traj[0] = a[:, :3]
+        out_traj[1] = a[:, 3:]
+        pub.publish(out_traj)
+        rate.sleep()
