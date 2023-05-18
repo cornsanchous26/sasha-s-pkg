@@ -4,6 +4,19 @@ import numpy as np
 import pickle as pkl
 import matplotlib.pyplot as plt
 
+import roslaunch
+
+package = 'rqt_gui'
+executable = 'rqt_gui'
+node = roslaunch.core.Node(package, executable)
+
+launch = roslaunch.scriptapi.ROSLaunch()
+launch.start()
+
+process = launch.launch(node)
+print(process.is_alive())
+process.stop()
+
 model_path = 'tphsmm_preproc.pkl'
 labels = ['t4', 't7', 'rl', 'rh', 'll', 'lh']
 data = []
