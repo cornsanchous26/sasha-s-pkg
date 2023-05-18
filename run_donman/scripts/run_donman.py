@@ -86,9 +86,9 @@ def align_shoulders_z(s1, s2):
 if __name__ == '__main__':
     
     #initialize a node
-    rospy.init_node("plain_py_node")
+    rospy.init_node("talker")
     # Display the namespace of the node handle
-    rospy.loginfo("PLAIN PY NODE] namespace of node = " + rospy.get_namespace());
+    rospy.loginfo("TALKER] namespace of node = " + rospy.get_namespace());
     
     with open(model_path, 'rb') as f:
         model = pkl.load(f)
@@ -162,3 +162,8 @@ if __name__ == '__main__':
         out_traj[1] = a[:, 3:]
         pub.publish(out_traj)
         rate.sleep()
+        
+    try:
+        talker()
+    except rospy.ROSInterruptException:
+        pass
